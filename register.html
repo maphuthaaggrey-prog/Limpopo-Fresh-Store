@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpopo Fresh | Register </title>
+    <link rel="icon" href="images/Limp-logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="signup.css" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <div class="navigation-bar">
+                <a href="index.html"><img src="images/Limp-logo.png" class="logo" width="100" height="30">
+                </a>
+            <nav>
+                <div class="navicons">
+                    <a href ="#"><img class="click-cart cart-icon" src="icons/bx-cart.svg"></a>
+                    <a href="#"><img src="icons/menu-icon.svg" class="menu-icon"></a>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="#" class="menu-close"><img src="icons/back.png" class="close-btn" width="19">
+                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                 
+                    <li class="li-search ">
+                        <input type="search" placeholder="Search" class="search-input">
+                        <Button class="btn-search"><img src="icons/search.png" class="search-icon"></Button>
+                    </li>
+                    <li><img class="cart-icon" src="icons/bx-cart.svg">
+                    </li>
+                    <li><a href="loginPage.html"><button class="login-btn">Log In</button></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <section class="hero">     
+
+        <form method="POST" action="register.php" onsubmit="return validateForm()">
+            <div class="welcome">
+                <h4 class="login-name">REGISTER</h4>
+                <p class="welcome-back-text">Create a new account before purchasing</p>
+            </div>
+            <div class="container-input">
+                <div class="input-typing">
+                    <label for="name" class="label-name">Name: 
+                        <input id="name" type="text" placeholder="Aggrey Maphutha" class="type" name="name">
+                    </label>
+                    <p class="error-message" id="name-error"></p>
+                   
+                    <label for="email-address" class="label-name">Email: 
+                        <input id="email-address" type="email" name="email-address" placeholder="maphuthaggrey@gmail.com" class="type">
+                    </label>
+                    <p class="error-message" id="email-error"></p>
+                    <label for="password" class="label-name">Password: 
+                        <input id="password" placeholder="Enter your Password" type="password" class="type" name="password">
+                    </label>
+                    <p class="error-message" id="password-error"></p>
+                    <label for="confirm-password" class="label-name">Confirm Password: 
+                        <input id="confirm-password" placeholder="Confirm your Password" class="type" name="confirm-password" type="password"/>
+                    </label>
+                    <p class="error-message" id="confirm-password-error"></p>
+                    <label for="remember-me" class="label-name">
+                        <input class="inline" id="remember-me" type="checkbox" name="remember-me" /> Remember Me
+                    </label>
+                </div>
+                <div class="input-typing-two">
+                    <label for="province" class="label-name">Address: <br/>
+                        <input id="street" type="text" class="type address" name="street" placeholder="Street">
+                        <p class="error-message" id="street-error"></p>
+                        <input id="province" type="text" class="type address" name="province" placeholder="Province">
+                        <p class="error-message" id="province-error"></p>
+                        <input id="city" type="text" class="type address province" name="city" placeholder="City">
+                        <input id="code" type="text" class="type address code" name="code" placeholder="Code">
+                    </label>
+                    <p class="label-name">Gender: </p>
+                    <div class="radio-btns">
+                        <label for="male"><input id="male" type="radio" name="gender">Male</label>
+                        <label for="female"><input id="female" type="radio" name="gender">Female</label>
+                        <label for="prefer"><input id="prefer" type="radio" name="gender">Other</label>
+                    </div>
+                    <label for="terms-and-conditions">
+                        <div class="check-terms">
+                            <input id="terms-and-conditions" type="checkbox" name="terms-and-conditions" /> 
+                            <span class="terms-text">By clicking, you agree to Limpopo Fresh’s Terms of Service and Privacy Policy</span>
+                        </div> 
+                    </label>
+                </div>
+            </div>
+            <input type="submit" value="Submit" name="signUp" class="submit" />
+            <p class="account">Have an account? <span><a href="loginPage.html">Login</a></span></p>
+        </form>
+    </section>
+
+    <script src ="index.js"></script>
+    <script src ="validation.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpopo Fresh | Log In </title>
+    <link rel="icon" href="images/Limp-logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="login-form.css" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navigation-bar">
+            <a href="index.html"><img src="images/Limp-logo.png" class="logo" width="100" height="30">
+            </a>
+            <nav>
+                <div class="navicons">
+                    <a href ="#"><img class="click-cart cart-icon" src="icons/bx-cart.svg"></a>
+                    <a href="#"><img src="icons/menu-icon.svg" class="menu-icon"></a>
+                </div>
+                <ul class="nav-list">
+                    <li>
+                        <a href="#" class="menu-close">
+                            <img src="icons/back.png" class="close-btn" width="19">
+                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+
+                    <li><img class="cart-icon" src="icons/bx-cart.svg">
+                    </li>
+                    <li class="li-search ">
+                        <input type="search" placeholder="Search" class="search-input">
+                        <Button class="btn-search"><img src="icons/search.png" class="search-icon" ></Button>
+                    </li>
+                    <li>
+                        <a href="register.html">
+                            <button class="login-btn">Register</button>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+
+<div class="wrap">
+    <section class="login-hero">
+       
+        <img src="images/lemon.jpeg" class="login-vegetable-picture">
+        <div class="form-wrapper">
+
+            <form action="register.php" method="POST"  class="login-form">
+                <div class="welcome">
+                    <h4 class="login-name">LOGIN</h4>
+                    <p class="welcome-back-text">Welcome back, Log in to your account before purchasing</p>
+                </div>
+                <div class="input-typing">
+                    <label for="email-address" class="label-name logn-nam">Email: <br/><input id="email-address" type="email" name="email-address" placeholder="maphuthaggrey@gmail.com" class="type login-page" required ></label>
+                    <br/>
+                    <br/>
+                    <label for="password" class="label-name logn-nam">Password: <br/><input id="password" placeholder="Enter your Password" type="password" class="type login-page" name="password" ></label>
+                    <br/>
+                    <br/>
+                    <div class="checkbox">
+                        <input type="checkbox" name="rememberme">
+                        <p class="label-remember-me">Remember Me</p>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" name="login" class="submit" />
+                <p class="account">Don't have an account? <span><a href = "register.html">Sign Up</a></span> </p>
+
+            </form>
+        </div>
+    </section>
+</div>
+    <script src = "index.js"></script>
+</body>
+
+</html>
