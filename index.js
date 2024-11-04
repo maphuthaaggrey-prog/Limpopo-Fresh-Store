@@ -17,5 +17,11 @@ closeMenu.addEventListener('click', () => {
 
     menu.classList.remove('open')
   });
+
+document.getElementById('.about-us').addEventListener('click', function() {
+    document.getElementById('target-section').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
   
   
