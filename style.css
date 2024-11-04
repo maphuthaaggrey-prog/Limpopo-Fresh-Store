@@ -4,6 +4,12 @@
     --text-color: black;
     --tertiary-color: #71b610;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+
 body {
     margin: 0;
     background-color: var(--background);
