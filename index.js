@@ -64,20 +64,15 @@ function handleFilterAndSort() {
 
 // Function for mobile filter and sort
 function handleFilterAndSortMobile(e) {
-  // Capture clicked list item
-  const listItem = e.target.closest('li');
-  if (!listItem) return; // Ignore clicks on non-list items
-
-  // Toggle the 'selected' class on the clicked list item
-  listItem.classList.toggle('selected');
-
-  // Get selected categories and price order from dropdown
-  const selectedCategories = Array.from(document.querySelectorAll('ul.categorylst li.selected')).map(li => li.textContent.trim());
-  const selectedPriceOrder = Array.from(document.querySelectorAll('ul.pricelst li.selected')).map(li => li.textContent.trim());
-
-  // Filter and sort the products
-  filterAndSortProducts(selectedCategories, selectedPriceOrder);
-}
+    // Capture clicked list item and mark as selected
+    const listItem = e.target;
+    listItem.classList.toggle('selected');
+    // Get selected categories and price order from dropdown
+    const selectedCategories = Array.from(document.querySelectorAll('ul.categorylst li.selected')).map(li => li.textContent.trim());
+    const selectedPriceOrder = Array.from(document.querySelectorAll('ul.pricelst li.selected')).map(li => li.textContent.trim());
+    // Pass the selected items to filter and sort function
+    filterAndSortProducts(selectedCategories, selectedPriceOrder);
+}.
 
 
 // Filter and Sort products
