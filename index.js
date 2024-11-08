@@ -62,10 +62,17 @@ function handleFilterAndSort() {
     filterAndSortProducts(selectedCategories, selectedPriceOrder);
 }
 
+// Function for mobile filter and sort
 function handleFilterAndSortMobile(e) {
+    // Capture clicked list item and mark as selected
+    const listItem = e.target;
+    listItem.classList.toggle('selected');
+
+    // Get selected categories and price order from dropdown
     const selectedCategories = Array.from(document.querySelectorAll('ul.categorylst li.selected')).map(li => li.textContent.trim());
     const selectedPriceOrder = Array.from(document.querySelectorAll('ul.pricelst li.selected')).map(li => li.textContent.trim());
 
+    // Pass the selected items to filter and sort function
     filterAndSortProducts(selectedCategories, selectedPriceOrder);
 }
 
@@ -90,11 +97,42 @@ function filterAndSortProducts(categories, priceOrder) {
             const priceA = parseFloat(a.getAttribute('data-price'));
             const priceB = parseFloat(b.getAttribute('data-price'));
 
-            return priceOrder.includes('low') ? priceA - priceB : priceB - priceA;
+            // Check the selected price order
+            if (priceOrder.includes('Low to High')) {
+                return priceA - priceB;
+            } else if (priceOrder.includes('High to Low')) {
+                return priceB - priceA;
+            }
         });
 
         // Clear and re-append products in sorted order
         productContainer.innerHTML = '';
         sortedProducts.forEach(product => productContainer.appendChild(product));
     }
+}
+
+// Filter products by category (used in case of direct selection from category list)
+function filterProductsByCategory(category) {
+    const products = document.querySelectorAll('.product');
+    products.forEach(product => {
+        const productCategory = product.getAttribute('data-category');
+        product.style.display = category === 'All Categories' || productCategory === category.toLowerCase() ? 'block' : 'none';
+    });
+}
+
+// Sort products by price (used in case of direct selection from price list)
+function sortProductsByPrice(order) {
+    const products = document.querySelectorAll('.product');
+    const productContainer = document.querySelector('.food-price');
+
+    const sortedProducts = Array.from(products).sort((a, b) => {
+        const priceA = parseFloat(a.getAttribute('data-price'));
+        const priceB = parseFloat(b.getAttribute('data-price'));
+
+        return order === 'Low to High' ? priceA - priceB : priceB - priceA;
+    });
+
+    // Clear and re-append products in sorted order
+    productContainer.innerHTML = '';
+    sortedProducts.forEach(product => productContainer.appendChild(product));
 }
