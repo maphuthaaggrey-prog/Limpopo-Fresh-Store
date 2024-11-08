@@ -9,7 +9,6 @@ html {
     scroll-behavior: smooth;
 }
 
-
 body {
     margin: 0;
     background-color: var(--background);
@@ -70,7 +69,7 @@ nav ul {
     margin: 0;
     list-style: none;
     border-radius: 0.5em;
-    width: 65%;
+    width: 50%;
     padding: 3em;
     text-align: right;
     transform: translateX(100%);
@@ -105,6 +104,7 @@ nav ul li a:hover {
 /* FOR MENU BUTTON WHEN IS CLICKED */
 .open {
     transform: translateX(0%);
+    z-index: 1;
 }
 
 .search-icon {
@@ -452,11 +452,14 @@ form {
 }
 .food-price p {
    text-align: center;
+   font-size: 11px;
+   font-weight: 600;
    color: rgb(36, 35, 35);
     
 }
+/*UPDATE */
 .food-price div {
-    border: 1px solid var(--tertiary-color);
+    box-shadow: 0 1px 15px 1px rgba(114, 114, 114, 0.3);
     border-radius: 8px;
     background-color: #ffffff;
     width: 100%;
@@ -464,20 +467,26 @@ form {
     align-items: center;
     transition: .1s ease-in-out;
     &:hover {
-        transform: scale(1.04);
+        transform: scale(1.02);
     }
     &:active {
-        transform: scale(1.07);
+        transform: scale(1.03);
     }
 }
 .product .product-image {
-    width: 100%;
+    width: 70%;
+    height: fit-content;
     margin: 0 auto;
     border-radius: 4px;
+}
+.product .product-sub {
+    color: grey;
+    font-weight: normal;
 }
 .cart {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .cart span {
     background-color: var(--tertiary-color);
@@ -487,8 +496,16 @@ form {
     border-radius: 4px;
     color: white;
     font-weight: 600;
+    font-size: 17px;
     margin-left: 10px;
-    padding: 4px 20px;
+    padding: 4px 28px;
+    transition: transform .2s ease-in-out;
+    &:hover {
+        cursor: pointer;
+    }
+    &:active {
+        transform: scale(1.3);
+    }
 }
 footer {
     margin: 1em 0;
@@ -496,29 +513,66 @@ footer {
 
 }
 
-
-.option-select {
+.dropdown {
     display: flex;
-    align-items: center;
+    gap: 2em;
     justify-content: center;
-    width: 50%;
-    margin: 0 auto 40px;
-}
 
-select {
-    margin: 3em;
+
+}
+.dropbtn {
+    margin: 2em 0;
     height: 25px;
-    width: 130px;
+    background-color: white;
+    width: 110px;
+    border-top: none;
     border-left: none;
     border-right: none;
-    border-top: none;
-    margin-bottom: 0;
-    border-bottom-color: var(--tertiary-color);
+    border-bottom: 1px solid rgb(153, 153, 153);
     margin-right: 1em;
-    outline: none;
+    text-align: start;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: none;
+    border-radius: 0
+
+}
+.categorylst, .pricelst {
+    margin-top: -2em;
+}
+.dropbtn .filter {
+    width: 13%;
+}
+.categorylst, .pricelst {
+    padding-inline-start: 10px;
+    padding-top: 10px;
+    height: auto;
+    width: 120px;
+    box-shadow: 0 1px 10px 1px rgba(155, 155, 155, 0.2);
+    transform: translateX(700%);
+    opacity: 0;
+
+    transition: .3s ease-in-out;
+    position: absolute;
+    background-color: white;
 }
 
-
+.dropdown div ul li {
+    list-style: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 13px;
+}
+.dropdown div ul li:hover {
+    background-color: rgb(247, 247, 247);
+}
+.showDrop {
+    transform: translateX(0);
+    opacity: 100%;
+}
 
 .logo-p {
     text-align: center;
@@ -555,10 +609,13 @@ select {
     justify-content: center;
     gap: 3em;
 }
+.us-great .product .product-image {
+    width: 80%;
+    height: 100px;
+    align-items: center;
+}
 .us-great div {
-    border: 1px solid var(--tertiary-color);
-    border-radius: 8px;
-    background-color: #ffffff;
+    background-color: white;
     width: 100%;
     display: inline-block;
     text-align: center;
@@ -579,6 +636,7 @@ select {
     border: 1px solid var(--tertiary-color);
     width: 60%;
     margin: 4em auto;
+
 }
 .send-message {
     font-weight: 500;
@@ -646,10 +704,14 @@ margin-top: 4px;
   }
 
   fieldset input,
-  textarea,
-  select {
-    margin: 10px 0 0 0;
+  textarea {
+    margin: 10px 0 0 0px;
     width: 96%;
+    min-height: 2em;
+  }
+  .select {
+    margin: 10px 0 0 15px;
+    width: 90%;
     min-height: 2em;
   }
 textarea {
@@ -718,9 +780,6 @@ fieldset {
     gap: 4em;
 }
 
-form {
-    margin-left: 4em;
-}
 
 .login-vegetable-picture {
         width: 450px;
@@ -862,17 +921,15 @@ nav ul {
         background-color: var(--background);
         font-size: 11px;
         position: fixed;
-        z-index: -1;
-        top: 0;
+        z-index: 1;
+        margin-top: -13em;
         left: 0;
-        direction: inherit;
-        box-sizing: inherit;
         align-items: center;
-        box-shadow: 1px 12px 29px rgba(94, 94, 94, 0.1);
         height: 100vh;
-        margin: 0;
+        margin-top: 10px;
         width: 13%;
-        padding: 3em;
+        padding-left: 3em;
+        margin-top: -3em;
     }
     .food-price {
         display: grid;
@@ -883,7 +940,6 @@ nav ul {
 
     }
     .all-products { 
-               margin-top: 8em;
         font-weight: 600;
         font-size: 16px;
     }
@@ -896,7 +952,16 @@ nav ul {
         margin-left: 2em;
         font-size: 14px;
     }
-    .option-select {
+    .reset {
+        margin-top: 4em;
+    }
+    .reset a {
+        color: #0e0e0e;
+        font-size: 13px;
+        margin-left: 2.3em;
+
+    }
+    .dropdown {
         display: none;
     }
     .check-btns {
