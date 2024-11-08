@@ -8,6 +8,13 @@ const priceBtn = document.querySelector('.pricebtn');
 const priceList = document.querySelector('.pricelst');
 const closeListItems = document.querySelectorAll('ul.categorylst li, ul.pricelst li');
 
+document.addEventListener('click', (e) => {
+    if (!e.target.matches('.categorybtn') && !e.target.matches('.pricebtn')) {
+        categoryList.classList.remove('showDrop');
+        priceList.classList.remove('showDrop');
+    }
+});
+
 
 menuBtn.addEventListener('click', () => {
     menu.classList.add('open');
