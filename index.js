@@ -12,7 +12,7 @@ const closeList = document.querySelectorAll('.heading .food-price');
 closeList.AddEventListner('click', () {
     categoryList.classList.remove('showDrop');
     priceList.classList.remove('showDrop');
-}
+});
 
 menuBtn.addEventListener('click', () => {
     menu.classList.add('open');
