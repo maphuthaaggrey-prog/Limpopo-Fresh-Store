@@ -75,8 +75,36 @@ function handleFilterAndSortMobile(e) {
   const selectedCategories = Array.from(document.querySelectorAll('ul.categorylst li.selected')).map(li => li.textContent.trim());
   const selectedPriceOrder = Array.from(document.querySelectorAll('ul.pricelst li.selected')).map(li => li.textContent.trim());
 
-  // Pass the selected items to filter and sort function
+  // Filter and sort the products
   filterAndSortProducts(selectedCategories, selectedPriceOrder);
+}
+
+function filterAndSortProducts(selectedCategories, selectedPriceOrder) {
+  // Get all product elements
+  const productElements = document.querySelectorAll('.product');
+
+  // Filter products based on selected categories
+  productElements.forEach(product => {
+    const category = product.getAttribute('data-category');
+    product.style.display = selectedCategories.length === 0 || selectedCategories.includes(category) ? 'block' : 'none';
+  });
+
+  // Sort products based on selected price order
+  const productList = Array.from(productElements).sort((a, b) => {
+    const priceA = parseFloat(a.getAttribute('data-price'));
+    const priceB = parseFloat(b.getAttribute('data-price'));
+    if (selectedPriceOrder.includes('Low to High')) {
+      return priceA - priceB;
+    } else if (selectedPriceOrder.includes('High to Low')) {
+      return priceB - priceA;
+    }
+    return 0;
+  });
+
+  // Update the product display order
+  productList.forEach(product => {
+    product.parentNode.appendChild(product);
+  });
 }
 
 // Filter and Sort products
