@@ -73,7 +73,7 @@ nav ul {
     padding: 3em;
     text-align: right;
     transform: translateX(100%);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 nav ul li {
         cursor: pointer;
