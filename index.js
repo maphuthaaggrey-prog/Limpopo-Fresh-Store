@@ -7,7 +7,7 @@ const categoryList = document.querySelector('.categorylst');
 const priceBtn = document.querySelector('.pricebtn');
 const priceList = document.querySelector('.pricelst');
 const closeListItems = document.querySelectorAll('ul.categorylst li, ul.pricelst li');
-const closeList = document.querySelectorAll('.heading, .food-price');
+const closeList = document.querySelectorAll('main p, div.food-price');
 
 
 closeList.addEventListener('click', () => {
