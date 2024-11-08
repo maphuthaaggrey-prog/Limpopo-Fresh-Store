@@ -552,13 +552,13 @@ footer {
     height: auto;
     width: 120px;
     box-shadow: 0 1px 10px 1px rgba(155, 155, 155, 0.2);
-    transform: translateX(700%);
+    transform: translateY(200%);
     opacity: 0;
-
-    transition: .3s ease-in-out;
+    transition: .2s ease-in-out;
     position: absolute;
     background-color: white;
 }
+
 
 .dropdown div ul li {
     list-style: none;
