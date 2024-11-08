@@ -98,3 +98,47 @@ function filterAndSortProducts(categories, priceOrder) {
         });
     }
 }
+
+
+
+categoryList.addEventListener('click', (e) => {
+    if (e.target.tagName === 'LI') {
+        const selectedCategory = e.target.textContent.trim();
+        filterProductsByCategory(selectedCategory);
+    }
+});
+
+priceList.addEventListener('click', (e) => {
+    if (e.target.tagName === 'LI') {
+        const sortOrder = e.target.textContent.trim();
+        sortProductsByPrice(sortOrder);
+    }
+});
+
+function filterProductsByCategory(category) {
+    products.forEach(product => {
+        const productCategory = product.getAttribute('data-category');
+        if (category === 'All Categories' || productCategory === category.toLowerCase()) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}
+
+function sortProductsByPrice(order) {
+    const productContainer = document.querySelector('.food-price');
+    const sortedProducts = Array.from(products).sort((a, b) => {
+        const priceA = parseFloat(a.getAttribute('data-price'));
+        const priceB = parseFloat(b.getAttribute('data-price'));
+
+        return order === 'Low to High' ? priceA - priceB : priceB - priceA;
+    });
+
+    // Clear and re-append products in sorted order
+    productContainer.innerHTML = '';
+    sortedProducts.forEach(product => {
+        productContainer.appendChild(product);
+    });
+}
+
