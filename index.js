@@ -8,137 +8,93 @@ const priceBtn = document.querySelector('.pricebtn');
 const priceList = document.querySelector('.pricelst');
 const closeListItems = document.querySelectorAll('ul.categorylst li, ul.pricelst li');
 
+// Dropdown toggle (mobile)
+function toggleDropdown(targetList, otherList) {
+    targetList.classList.toggle('showDrop');
+    otherList.classList.remove('showDrop'); // Close other dropdown
+}
+
+// Close dropdowns when clicking outside
 document.addEventListener('click', (e) => {
     if (!e.target.matches('.categorybtn') && !e.target.matches('.pricebtn')) {
-        categoryList.classList.remove('showDrop');
-        priceList.classList.remove('showDrop');
+        closeDropdowns();
     }
 });
 
-
-menuBtn.addEventListener('click', () => {
-    menu.classList.add('open');
+function closeDropdowns() {
     categoryList.classList.remove('showDrop');
     priceList.classList.remove('showDrop');
-});
+}
 
-closeBtn.addEventListener('click', () => {
-    menu.classList.remove('open');
-});
+// Menu toggle (mobile)
+function toggleMenu() {
+    menu.classList.toggle('open');
+    closeDropdowns(); // Close dropdowns if menu is open
+}
 
-closeMenu.addEventListener('click', () => {
-    menu.classList.remove('open');
-});
+menuBtn.addEventListener('click', toggleMenu);
+closeBtn.addEventListener('click', () => menu.classList.remove('open'));
+closeMenu.addEventListener('click', () => menu.classList.remove('open'));
 
-categoryBtn.addEventListener('click', () => {
-    categoryList.classList.toggle('showDrop');
-    priceList.classList.remove('showDrop'); 
-});
+// Category and Price dropdown toggle
+categoryBtn.addEventListener('click', () => toggleDropdown(categoryList, priceList));
+priceBtn.addEventListener('click', () => toggleDropdown(priceList, categoryList));
 
-priceBtn.addEventListener('click', () => {
-    priceList.classList.toggle('showDrop');
-    categoryList.classList.remove('showDrop'); 
-});
-
+// Close dropdown after selecting an item (mobile)
 closeListItems.forEach(item => {
-    item.addEventListener('click', () => {
-        categoryList.classList.remove('showDrop');
-        priceList.classList.remove('showDrop');
-    });
+    item.addEventListener('click', closeDropdowns);
 });
 
-document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
-    checkbox.addEventListener('change', function() {
-        const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
-        const selectedPriceOrder = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(cb => cb.value);
-
-        filterAndSortProducts(selectedCategories, selectedPriceOrder);
-    });
+// Filter and Sort for desktop (checkboxes)
+document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', handleFilterAndSort);
 });
 
-document.querySelectorAll('ul.categorylst li, ul.pricelst li').forEach(function(listItem) { 
-    listItem.addEventListener('click', function() {
-        listItem.classList.toggle('selected');
-
-        const selectedCategories = Array.from(document.querySelectorAll('ul.categorylst li.selected')).map(li => li.textContent.trim());
-        const selectedPriceOrder = Array.from(document.queryAllSelector('ul.pricelst li.selected')).map(li => li.textContent.trim());
-
-        filterAndSortProducts(selectedCategories, selectedPriceOrder);
-    });
+// Filter and Sort for mobile (dropdown)
+document.querySelectorAll('ul.categorylst li, ul.pricelst li').forEach(listItem => {
+    listItem.addEventListener('click', handleFilterAndSortMobile);
 });
 
+function handleFilterAndSort() {
+    const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+    const selectedPriceOrder = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(cb => cb.value);
+
+    filterAndSortProducts(selectedCategories, selectedPriceOrder);
+}
+
+function handleFilterAndSortMobile(e) {
+    const selectedCategories = Array.from(document.querySelectorAll('ul.categorylst li.selected')).map(li => li.textContent.trim());
+    const selectedPriceOrder = Array.from(document.querySelectorAll('ul.pricelst li.selected')).map(li => li.textContent.trim());
+
+    filterAndSortProducts(selectedCategories, selectedPriceOrder);
+}
+
+// Filter and Sort products
 function filterAndSortProducts(categories, priceOrder) {
     const products = document.querySelectorAll('.product');
+    const productContainer = document.querySelector('.food-price');
 
+    // Filter products by category
     products.forEach(product => {
         const productCategory = product.getAttribute('data-category');
         if (categories.length === 0 || categories.includes(productCategory)) {
-            product.style.display = 'block'; 
-        } else {
-            product.style.display = 'none'; 
-        }
-    });
-
-    if (priceOrder.length > 0) {
-        const productContainer = document.querySelector('.food-price');
-        const sortedProducts = Array.from(products).sort((a, b) => {
-            const priceA = parseFloat(a.getAttribute('data-price'));
-            const priceB = parseFloat(b.getAttribute('data-price'));
-
-            if (priceOrder.includes('low')) {
-                return priceA - priceB; // Sort low to high
-            } else if (priceOrder.includes('high')) {
-                return priceB - priceA; // Sort high to low
-            }
-        });
-
-        productContainer.innerHTML = '';
-        sortedProducts.forEach(product => {
-            productContainer.appendChild(product);
-        });
-    }
-}
-
-
-
-categoryList.addEventListener('click', (e) => {
-    if (e.target.tagName === 'LI') {
-        const selectedCategory = e.target.textContent.trim();
-        filterProductsByCategory(selectedCategory);
-    }
-});
-
-priceList.addEventListener('click', (e) => {
-    if (e.target.tagName === 'LI') {
-        const sortOrder = e.target.textContent.trim();
-        sortProductsByPrice(sortOrder);
-    }
-});
-
-function filterProductsByCategory(category) {
-    products.forEach(product => {
-        const productCategory = product.getAttribute('data-category');
-        if (category === 'All Categories' || productCategory === category.toLowerCase()) {
             product.style.display = 'block';
         } else {
             product.style.display = 'none';
         }
     });
+
+    // Sort products by price if any order is selected
+    if (priceOrder.length > 0) {
+        const sortedProducts = Array.from(products).sort((a, b) => {
+            const priceA = parseFloat(a.getAttribute('data-price'));
+            const priceB = parseFloat(b.getAttribute('data-price'));
+
+            return priceOrder.includes('low') ? priceA - priceB : priceB - priceA;
+        });
+
+        // Clear and re-append products in sorted order
+        productContainer.innerHTML = '';
+        sortedProducts.forEach(product => productContainer.appendChild(product));
+    }
 }
-
-function sortProductsByPrice(order) {
-    const productContainer = document.querySelector('.food-price');
-    const sortedProducts = Array.from(products).sort((a, b) => {
-        const priceA = parseFloat(a.getAttribute('data-price'));
-        const priceB = parseFloat(b.getAttribute('data-price'));
-
-        return order === 'Low to High' ? priceA - priceB : priceB - priceA;
-    });
-
-    // Clear and re-append products in sorted order
-    productContainer.innerHTML = '';
-    sortedProducts.forEach(product => {
-        productContainer.appendChild(product);
-    });
-}
-
