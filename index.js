@@ -9,7 +9,7 @@ const priceList = document.querySelector('.pricelst');
 const closeListItems = document.querySelectorAll('ul.categorylst li, ul.pricelst li');
 const closeList = document.querySelectorAll('.heading .food-price');
 
-closeList.AddEventListener('click', () => {
+closeList.addEventListener('click', () => {
     categoryList.classList.remove('showDrop');
     priceList.classList.remove('showDrop');
 });
