@@ -567,7 +567,7 @@ footer {
 
 .categorylst label input[type="checkbox"] 
  , .pricelst label input[type="radio"]{
-    opacity: 0;
+    opacity: 50%;
 
     
 }
