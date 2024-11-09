@@ -45,40 +45,18 @@ closeListItems.forEach(item => {
     item.addEventListener('click', closeDropdowns);
 });
 
-// Filter and Sort for desktop (checkboxes)
-document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', handleFilterAndSort);
-});
-
-// Filter and Sort for mobile (dropdown)
-document.querySelectorAll('ul.categorylst li, ul.pricelst li').forEach(listItem => {
-    listItem.addEventListener('click', handleFilterAndSortMobile);
+document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+    input.addEventListener('change', handleFilterAndSort);
 });
 
 function handleFilterAndSort() {
+    // Get selected categories (checkboxes)
     const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
-    const selectedPriceOrder = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(cb => cb.value);
+    // Get selected price order (radio)
+    const selectedPriceOrder = document.querySelector('input[name="price"]:checked')?.value || '';
 
     filterAndSortProducts(selectedCategories, selectedPriceOrder);
 }
-
-// Function for mobile filter and sort
-function handleFilterAndSortMobile(e) {
-  // Capture clicked list item
-  const listItem = e.target.closest('li');
-  if (!listItem) return; // Ignore clicks on non-list items
-
-  // Toggle the 'selected' class on the clicked list item
-  listItem.classList.toggle('selected');
-
-  // Get selected categories and price order from dropdown
-  const selectedCategories = Array.from(document.querySelectorAll('ul.categorylst li.selected')).map(li => li.textContent.trim());
-  const selectedPriceOrder = Array.from(document.querySelectorAll('ul.pricelst li.selected')).map(li => li.textContent.trim());
-
-  // Filter and sort the products
-  filterAndSortProducts(selectedCategories, selectedPriceOrder);
-}
-
 
 // Filter and Sort products
 function filterAndSortProducts(categories, priceOrder) {
@@ -96,45 +74,25 @@ function filterAndSortProducts(categories, priceOrder) {
     });
 
     // Sort products by price if any order is selected
-    if (priceOrder.length > 0) {
-        const sortedProducts = Array.from(products).sort((a, b) => {
-            const priceA = parseFloat(a.getAttribute('data-price'));
-            const priceB = parseFloat(b.getAttribute('data-price'));
+    if (priceOrder) {
+        const sortedProducts = Array.from(products)
+            .filter(product => product.style.display === 'block') // Sort only visible products
+            .sort((a, b) => {
+                const priceA = parseFloat(a.getAttribute('data-price'));
+                const priceB = parseFloat(b.getAttribute('data-price'));
 
-            // Check the selected price order
-            if (priceOrder.includes('Low to High')) {
-                return priceA - priceB;
-            } else if (priceOrder.includes('High to Low')) {
-                return priceB - priceA;
-            }
-        });
+                if (priceOrder === 'low') {
+                    return priceA - priceB;
+                } else if (priceOrder === 'high') {
+                    return priceB - priceA;
+                }
+            });
 
         // Clear and re-append products in sorted order
         productContainer.innerHTML = '';
         sortedProducts.forEach(product => productContainer.appendChild(product));
     }
 }
-
-// Filter products by category (used in case of direct selection from category list)
-function filterProductsByCategory(category) {
-    const products = document.querySelectorAll('.product');
-    products.forEach(product => {
-        const productCategory = product.getAttribute('data-category');
-        product.style.display = category === 'All Categories' || productCategory === category.toLowerCase() ? 'block' : 'none';
-    });
-}
-
-// Sort products by price (used in case of direct selection from price list)
-function sortProductsByPrice(order) {
-    const products = document.querySelectorAll('.product');
-    const productContainer = document.querySelector('.food-price');
-
-    const sortedProducts = Array.from(products).sort((a, b) => {
-        const priceA = parseFloat(a.getAttribute('data-price'));
-        const priceB = parseFloat(b.getAttribute('data-price'));
-
-        return order === 'Low to High' ? priceA - priceB : priceB - priceA;
-    });
 
     // Clear and re-append products in sorted order
     productContainer.innerHTML = '';
