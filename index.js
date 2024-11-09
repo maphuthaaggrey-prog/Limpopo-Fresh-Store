@@ -93,8 +93,3 @@ function filterAndSortProducts(categories, priceOrder) {
         sortedProducts.forEach(product => productContainer.appendChild(product));
     }
 }
-
-    // Clear and re-append products in sorted order
-    productContainer.innerHTML = '';
-    sortedProducts.forEach(product => productContainer.appendChild(product));
-}
