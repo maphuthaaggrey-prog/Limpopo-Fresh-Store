@@ -596,32 +596,31 @@ input[type="checkbox"]:checked::before {
     content: '✔'; /* Checkmark symbol */
     color: white;
     margin-left: -0.69em;
-    margin-top: -.01em;
+    margin-top: -.1em;
     font-size: 14px;
     display: block;
     text-align: center;
     line-height: 20px;
+
 }
 
 /* Custom dot for radio buttons */
 input[type="radio"]:checked::before {
     content: '';
-    margin-left: -0.6em;
-    margin-top: -.01em;
-    display: block;
-    width: 12px;
-
-    height: 12px;
+    margin-left: -9.3px;
+    margin-top: 1.7px;
+    display: block; 
+    width: 13px;
+    height: 13px;
     background-color: white;
     border-radius: 50%;
     position: absolute;
-    top: 4px;
-    left: 4px;
+
 }
 
 /* Hover effect for checkboxes and radio buttons */
 input[type="checkbox"]:hover, input[type="radio"]:hover {
-    border-color: #888; /* Change border color on hover */
+    border-color: #5bb848; /* Change border color on hover */
 }
 
 
@@ -974,7 +973,6 @@ nav ul {
     .colomn {
         display: flex;
         max-width: 900px;
-        margin: auto;
         padding-left: 26em;
         justify-content: space-between;
     }
@@ -991,14 +989,12 @@ nav ul {
         font-size: 11px;
         position: fixed;
         z-index: 1;
-        margin-top: -13em;
         left: 0;
         align-items: center;
         height: 100vh;
-        margin-top: 10px;
         width: 13%;
-        padding-left: 3em;
-        margin-top: -3em;
+        padding-left: 4em;
+        margin-top: -13em;
     }
     .food-price {
         display: grid;
@@ -1027,15 +1023,17 @@ nav ul {
     .reset a {
         color: #0e0e0e;
         font-size: 13px;
-        margin-left: 2.3em;
 
     }
     .dropdown {
         display: none;
     }
     .check-btns {
-   
         margin-left: 2.5em;
-        
+    }
+    .check-btns label {
+        display: flex;
+        gap: 8px;
+        align-items: center;
     }
 }
