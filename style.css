@@ -577,6 +577,31 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
     background-color: var(--tertiary-color); /* Green when active */
     border: var(--tertiary-color);
 }
+
+/* Custom checkmark for checkboxes */
+input[type="checkbox"]:checked::before {
+    content: ''; /* Checkmark symbol */
+    color: white;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    line-height: 20px;
+}
+
+/* Custom dot for radio buttons */
+input[type="radio"]:checked::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+
 .dropdown div ul li:hover {
     background-color: rgb(247, 247, 247);
 }
