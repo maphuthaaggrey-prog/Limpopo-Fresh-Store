@@ -48,22 +48,31 @@
                 <button class="dropbtn categorybtn">Category
                     <img src="./icons/dropdown.png" class="filter">
                 </button>
-                <ul class="categorylst">
-                    <li>All Categories</li>
-                    <li>Fruits</li>
-                    <li>Vegetables</li>
-                </ul>
+                <div id="filter-form" class="categorylst">
+                    <label>
+                        <input type="checkbox" name="category" value="fruits"> Fruits
+                    </label><br>
+                    <label>
+                        <input type="checkbox" name="category" value="vegetables"> Vegetables
+                    </label><br>
+                </div>
             </div>
-    
             <div class="price">
                 <button class="dropbtn pricebtn">Price
                     <img src="./icons/dropdown.png" class="filter">
                 </button>
-                <ul class="pricelst">
-                    <li>Low to High</li>
-                    <li>High to Low</li>
-                </ul>
+                <div id="ascending-form" class="pricelst">
+                    <label>
+                        <input type="radio" name="price" value="low"> Low to High
+                    </label><br>
+                    <label>
+                        <input type="radio" name="price" value="high"> High to Low
+                    </label><br>
+                </div>
             </div>
+        </div>
+        <div class="reset mobile">
+            <p><a href="shop.html">Reset All</a></p>
         </div>
     
         <div class="colomn">
@@ -85,10 +94,10 @@
                         <p class="select-cat">Prices</p>
                          <div id="ascending-form" class="check-btns">
                             <label>
-                                <input type="checkbox" name="price" value="low"> Low to High
+                                <input type="radio" name="price" value="low"> Low to High
                             </label><br>
                             <label>
-                                <input type="checkbox" name="price" value="high"> High to Low
+                                <input type="radio" name="price" value="high"> High to Low
                             </label><br>
 
                         </div>
@@ -272,6 +281,7 @@
 </footer>
 </div>
     <script src="index.js"></script>
+
 </body>
 
 </html>
