@@ -973,6 +973,7 @@ nav ul {
     .colomn {
         display: flex;
         max-width: 900px;
+        margin: auto;
         padding-left: 26em;
         justify-content: space-between;
     }
