@@ -573,12 +573,7 @@ footer {
     opacity: 60%;
 
 }
-input[type="checkbox"]:checked, input[type="radio"]:checked {
-    background-color: var(--tertiary-color); /* Green when active */
-    border: var(--tertiary-color);
-}
 
-/* General styles for checkboxes and radio buttons */
 input[type="checkbox"], input[type="radio"] {
     position: relative;
     appearance: none;
