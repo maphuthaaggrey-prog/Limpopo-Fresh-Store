@@ -579,7 +579,7 @@ input[type="checkbox"], input[type="radio"] {
     appearance: none;
     background-color: #fff;
     border: 2px solid #ccc;
-    width: 20px;
+    width: 18px;
     height: 20px;
     cursor: pointer;
     outline: none;
@@ -595,7 +595,7 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
 input[type="checkbox"]:checked::before {
     content: '✔'; /* Checkmark symbol */
     color: white;
-    margin-left: -0.6em;
+    margin-left: -0.69em;
     margin-top: -.01em;
     font-size: 14px;
     display: block;
