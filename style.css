@@ -570,17 +570,29 @@ footer {
 
 .categorylst label input[type="checkbox"] 
  , .pricelst label input[type="radio"]{
-    opacity: 60%;  
-        background-color: var(--tertiary-color); /* Green when active */
+    opacity: 60%;
+
 }
 input[type="checkbox"]:checked, input[type="radio"]:checked {
     background-color: var(--tertiary-color); /* Green when active */
     border: var(--tertiary-color);
 }
 
-/* Custom checkmark for checkboxes */
+/* General styles for checkboxes and radio buttons */
+input[type="checkbox"], input[type="radio"] {
+    position: relative;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type="checkbox"]:checked, input[type="radio"]:checked {
+    background-color: var(--tertiary-color);
+    border-color: #4CAF50; 
+}
+
 input[type="checkbox"]:checked::before {
-    content: ''; /* Checkmark symbol */
+    content: '✔'; /* Checkmark symbol */
     color: white;
     font-size: 14px;
     display: block;
@@ -600,6 +612,13 @@ input[type="radio"]:checked::before {
     top: 4px;
     left: 4px;
 }
+
+/* Hover effect for checkboxes and radio buttons */
+input[type="checkbox"]:hover, input[type="radio"]:hover {
+    border-color: #888; /* Change border color on hover */
+}
+
+
 
 
 .dropdown div ul li:hover {
