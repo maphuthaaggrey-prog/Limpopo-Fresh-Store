@@ -2,11 +2,7 @@
 :root {
     --background: white;
     --text-color: black;
-    --tertiary-color: #71b610;
-}
-
-html {
-    scroll-behavior: smooth;
+    --tertiary-color: #366e36;
 }
 
 body {
@@ -24,7 +20,7 @@ body {
     position: sticky;
     top: 0;
     background-color: white;
-    box-shadow: 0 2px 7px rgb(231, 231, 231);
+    box-shadow: 0 1px 1px rgb(231, 231, 231);
 }
 .navigation-bar {
         display: flex;
@@ -241,13 +237,13 @@ button:hover {
 
 .social-icons {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     justify-content: center;
     margin-top: 3em;
 }
 
 .social-icon-color {
-    color: var(--tertiary-color);
+    color: white;
 }
 
 svg:hover {
@@ -271,14 +267,18 @@ footer .copy-right {
 
 .hero {
     background-image: url(images/pexels-karolina-grabowska-4397921.jpg);
-    height: 130vh;
+    height: 100vh;
     width: 100%;
     background-size: cover;
     display: flex;
     justify-content: center;
 }
 
-
+.seeAll {
+    display: flex;
+    justify-content: center;
+    margin-top: -2em;
+}
     
 .container-input {
     display: block;
@@ -415,7 +415,7 @@ footer .copy-right {
     margin-left: 1em;
 }
 .terms-text {
-        font-size: 13px;
+        font-size: 12px;
         text-align: center;
     }
 
@@ -440,7 +440,7 @@ form {
 }
 .heading {
     text-align: center;
-    margin: 2em 4em 1em;
+    margin: 2em 4em 0;
     font-size: 20px;
     font-weight: 700;
 }
@@ -449,6 +449,7 @@ form {
     grid-template-columns: repeat(auto-fit, minmax(160px, .1fr));
     justify-content: center;
     gap: 1em;
+    margin: 4em 0;
 }
 .food-price p {
    text-align: center;
@@ -508,10 +509,208 @@ form {
     }
 }
 footer {
-    margin: 1em 0;
+    background-color: var(--tertiary-color);
     padding: 5px 0;
+    display: block;
+    padding: 4em 0;
+    padding-top: 3em;
 
 }
+
+.footerlogo {
+    width: 100px;
+    margin: 5% 0 5%;
+}
+.footer-icons {
+   display: flex;
+   gap: 3em;
+   justify-content: center;
+}
+.footer-right img {
+   width: 30px;
+   height: 30px;
+   margin-top: 10%;
+}
+.footer-left  {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+.footer-left .contactButton {
+    opacity: 1;
+}
+.footer-right form {
+    width: 80%;
+    margin: auto;
+    padding-top: 3em;
+   
+}
+.footer-right form input {
+    width: 100%;
+    border: none;
+    height: 40px;
+}
+.footer-right form input[type="submit"] {
+    background-color: white;
+    color: var(--tertiary-color);
+    width: 100%;
+    font-weight: 700;
+    border-radius: 40px;
+ 
+}
+.footer-right form input[type="email"] {
+    width: 100%;
+    background-color: white;
+    border-left: none;
+    border-radius: 40px;
+    border-top: none;
+    border-right: none;
+    border: none;
+    color: white;
+    padding-left: 10px;
+    box-sizing: border-box;
+    outline: none;
+    margin: 1em auto;
+}
+.footer-right form input[type="email"]:active {
+   color: white;
+}
+.footer-right form label {
+    color: white;
+    font-weight: 600;
+}
+
+.footer-about  {
+
+    width: 100%;
+    color: white;
+
+}
+.footer-about a {
+
+   text-decoration: underline;
+   color: white;
+
+}
+.about-click {
+    text-decoration: underline;
+    line-height: 35px;
+    color: white;
+
+}
+
+
+.terms h3 {
+    font-size: 13px;
+    margin: 1em 0;
+}
+.terms h1 {
+    font-size: 15px;
+    font-weight: 800;
+    margin: 1em 0;
+    text-decoration: underline;
+}
+.terms p {
+    color: grey;
+    font-size: 12px;
+}
+.terms .terms-agree {
+    text-align: end;
+    margin: 2em;
+}
+.terms .terms-agree button{
+    border: none;
+    background-color: var(--tertiary);
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+    transform: scale(1.01);
+    }
+}
+.terms .terms-agree button a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+  .about-click {
+    cursor: pointer;
+  }
+  .social  .footer-cont .send-message {
+    font-weight: 800;
+    font-size: 17px;
+
+  }
+
+
+h5 {
+    text-align: center;
+    margin-top: 2em;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.footer-cont .form-cont fieldset {
+    border: none;
+    padding: 2rem 0;
+    padding-bottom: 0;
+    border-bottom: 3px solid #3b3b4f;
+  }
+ .footer-cont .form-cont input, textarea {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: var(--tertiary);
+    border-bottom-width: 3px;
+    border-radius: 3px;
+    background-color: var(--background);
+    outline: none;
+}
+.footer-cont .form-cont input:active {
+outline: none;
+}
+
+.footer-cont .form-cont .submit-btn {
+background-color: var(--tertiary);
+border: none;
+margin-top: 0;
+color: white;
+font-weight: 500;
+height: 34px;
+}
+.footer-cont .form-cont .submit-btn:hover {
+opacity: 90%;
+cursor: pointer;
+}
+.footer-cont .form-cont .submit-btn:active {
+opacity: 70%;
+
+}
+.footer-cont .form-cont .error-message {
+color: rgb(226, 66, 66);
+font-size: 10px;
+margin-top: 3px;
+}
+
+.footer-cont .form-cont fieldset:last-of-type {
+    border-bottom: none;
+  }
+  
+.footer-cont .form-cont label {
+    display: block;
+    color: white;
+    margin: 0.5rem 0;
+  }
+
+  .footer-cont .form-cont input, .footer-cont .form-cont
+  textarea, .footer-cont form 
+  select {
+    margin: 10px 0 0 0;
+    width: 100%;
+    min-height: 2em;
+    color: white;
+  }
+
+
 .dropdown {
     display: flex;
     gap: 2em;
@@ -574,30 +773,34 @@ footer {
 
 }
 
-input[type="checkbox"], input[type="radio"] {
+.categories input[type="checkbox"], .categories input[type="radio"], 
+.categorylst input[type="checkbox"], .pricelst input[type="radio"] {
     position: relative;
     appearance: none;
     background-color: #fff;
     border: 2px solid #ccc;
-    width: 18px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
     outline: none;
-    border-radius: 5px; /* For rounded corners */
+    border-radius: 5px; 
 }
 
 
-input[type="checkbox"]:checked, input[type="radio"]:checked {
+.categories input[type="checkbox"]:checked, .categories input[type="radio"]:checked,
+.categorylst input[type="checkbox"]:checked, .pricelst input[type="radio"]:checked {
     background-color: var(--tertiary-color);
     border-color: var(--tertiary-color); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-input[type="checkbox"]:checked::before {
+ input[type="checkbox"]:checked::before {
     content: '✔'; /* Checkmark symbol */
     color: white;
-    margin-left: -0.69em;
-    margin-top: -.1em;
-    font-size: 14px;
+    font-size: 10px;
+    margin-left: -10.6px;
     display: block;
     text-align: center;
     line-height: 20px;
@@ -605,13 +808,12 @@ input[type="checkbox"]:checked::before {
 }
 
 /* Custom dot for radio buttons */
-input[type="radio"]:checked::before {
+ input[type="radio"]:checked::before {
     content: '';
-    margin-left: -9.3px;
-    margin-top: 1.7px;
     display: block; 
-    width: 13px;
-    height: 13px;
+    margin-left: -10.6px;
+    width: 8px;
+    height: 8px;
     background-color: white;
     border-radius: 50%;
     position: absolute;
@@ -676,6 +878,7 @@ input[type="checkbox"]:hover, input[type="radio"]:hover {
     grid-template-columns: repeat(auto-fit, minmax(220px, .1fr));
     justify-content: center;
     gap: 3em;
+    margin-bottom: 4em;
 }
 .us-great .product .product-image {
     width: 80%;
@@ -700,12 +903,7 @@ input[type="checkbox"]:hover, input[type="radio"]:hover {
     width: 80%;
     margin: 16px auto;
 }
-.underline {
-    border: 1px solid var(--tertiary-color);
-    width: 60%;
-    margin: 4em auto;
 
-}
 .send-message {
     font-weight: 500;
     margin-top: 1em;
@@ -875,15 +1073,17 @@ nav ul {
         height: auto;
         width: auto;
         transform: translateX(0%);
-        li a {
+}
+nav ul li a {
             list-style: none;
             font-size: 12px;
+            .active {
+                color: var(--tertiary-color);
+                text-decoration: underline;
         }
         
-        .active {
-            color: var(--tertiary-color);
-            text-decoration: underline;
-        }
+        
+
     }
     
     .hero {
@@ -988,14 +1188,12 @@ nav ul {
         display: unset;
         background-color: var(--background);
         font-size: 11px;
-        position: fixed;
-        z-index: 1;
+        position: absolute;
         left: 0;
         align-items: center;
-        height: 100vh;
         width: 13%;
         padding-left: 4em;
-        margin-top: -13em;
+        margin-top: -7em;
     }
     .food-price {
         display: grid;
@@ -1037,4 +1235,76 @@ nav ul {
         gap: 8px;
         align-items: center;
     }
+
+    .footer-icons {
+        justify-content: center;
+     }
+     footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .footer-about {
+        width: 400px;
+        text-align: start;
+    }
+    .footer-left {
+        width: 450px;
+        margin: 0;
+        text-align: unset;
+    }
+
+
+    .footer-right form input {
+        width: 100%;
+        border: none;
+        height: 40px;
+    }
+    .footer-right form {
+        width: 100%;
+        margin: auto;
+        padding-top: 3em;
+       
+    }
+    .footer-right form input[type="email"] {
+        width: 100%;
+    }
+    .footer-cont form {
+        width: 70vw;
+        height: 90vh;
+        padding-bottom: 3em;
+
+    }
+    .terms {
+        width: 82%;
+        max-width: 757px;
+    }
+
+
+
+
+    input[type="checkbox"]:checked::before {
+        content: '✔'; /* Checkmark symbol */
+        color: white;
+        font-size: 10px;
+        margin-left: -9px;
+        margin-top: 1px;
+        display: block;
+        text-align: center;
+        line-height: 20px;
+    
+    }
+    
+    /* Custom dot for radio buttons */
+     input[type="radio"]:checked::before {
+
+        margin-left: -9.1px;
+        margin-top: 2.2px;
+
+    
+    }
+    
+
+
 }
