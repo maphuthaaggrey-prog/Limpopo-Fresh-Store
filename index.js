@@ -1,7 +1,7 @@
 const menu = document.querySelector('nav ul');
 const menuBtn = document.querySelector('.menu-icon');
 const closeBtn = document.querySelector('.close-btn');
-const closeMenu = document.querySelector('.wrap');
+
 const categoryBtn = document.querySelector('.categorybtn');
 const categoryList = document.querySelector('.categorylst');
 const priceBtn = document.querySelector('.pricebtn');
@@ -34,7 +34,7 @@ function toggleMenu() {
 
 menuBtn.addEventListener('click', toggleMenu);
 closeBtn.addEventListener('click', () => menu.classList.remove('open'));
-closeMenu.addEventListener('click', () => menu.classList.remove('open'));
+
 
 // Category and Price dropdown toggle
 categoryBtn.addEventListener('click', () => toggleDropdown(categoryList, priceList));
